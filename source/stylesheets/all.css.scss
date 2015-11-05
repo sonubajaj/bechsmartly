@@ -1,0 +1,390 @@
+@import "bootstrap.min";
+@import "bootstrap-theme.min";
+@import "bootstrapValidator.min";
+
+@import 'scut';
+@import 'compass/css3/box-sizing';
+@import 'compass/css3/images';
+@import 'compass/css3/border-radius';
+@import 'compass/css3/text-shadow';
+@import 'compass/css3/box-shadow';
+@import 'compass/css3/hyphenation';
+@import "compass/css3/background-size";
+@import 'compass/css3/font-face';
+
+@include font-face('Glyphicons Halflings', font-files('glyphicons-halflings-regular.woff', 'glyphicons-halflings-regular.ttf', 'glyphicons-halflings-regular.svg#glyphicons_halflingsregular'), 'glyphicons-halflings-regular.eot');
+
+* { @include box-sizing(border-box); }
+
+* {
+  position:            relative;
+}
+
+img {
+  display:             none;
+}
+
+$font-color:           lighten(#000, 30%);
+$green:                #23A38F;
+$red:                  #F0563D;
+
+body {
+  overflow-x:          hidden;
+  font-weight:         300;
+  color:               $font-color;
+  padding-top:         60px;
+}
+
+mark {
+  background:          #ff0 !important;
+}
+
+a {
+  outline:             0 !important;
+}
+
+.special-font {
+  font-family:         'Volkhov', serif;
+}
+
+$gradient-color:     rgba(11,254,216,0.5);
+
+nav,  header, .green-textured-back {
+  color:               lighten($green, 45%);
+  @include background(
+    linear-gradient($gradient-color, $gradient-color),
+    image-url('dark-back.png')
+  );
+}
+
+#back {
+  display:             block;
+  width:               1px;
+  height:              1px;
+  @include scut-absolute(-999px n n -999px);
+}
+
+.container {
+  @include scut-padding(auto 30px);
+}
+
+header {
+  z-index:            10;
+  @include box-shadow(1px 2px 2px lighten(#000,30%));
+
+  .display-logo {
+    height:            90px;
+    background-color:  White;
+    top:               -60px;
+
+    @include scut-padding(40px 50px 30px 50px);
+    @include box-sizing(content-box);
+    @include border-bottom-radius(3px);
+  }
+  .bold {
+    font-weight:       300;
+    color:             White;
+  }
+  .tagline {
+    color:             lighten(#000, 30%);
+    font-size:         12px;
+    z-index:           10;
+
+    @include scut-absolute(n 160px 60px n);
+    .ctx-bold {
+      color:           black;
+      font-weight:     400;
+    }
+  }
+  .title {
+    font-size:         26px;
+    line-height:       1.3*26px;
+
+    @extend .bold;
+    @include hyphens(auto);
+  }
+  p {
+    font-size:         17px;
+    padding:           0px;
+  }
+  .ctx-center-big{
+    font-size:         24px;
+    text-align:        center;
+  }
+  .graphic {
+    max-width:         100%;
+    margin-top:        10%;
+  }
+}
+ nav {
+  ::selection      {background-color: transparent !important;}
+  ::-moz-selection {background-color: transparent !important;}
+  position:            fixed;
+  top:                 0px;
+  height:              60px;
+  width:               100%;
+  border-bottom:       1px solid White;
+  z-index:             9;
+
+  ul {
+    margin-top:        20px;
+    @include scut-list-inline(30px, false);
+
+    a {
+      text-decoration:   none;
+      color:             inherit;
+      outline:           0 !important;
+      background-color:  transparent !important;
+      &:hover {
+        color:           white;
+        text-decoration: underline;
+      }
+      &:visited,&:focus,&:active {
+        text-decoration:   none;
+        color:             inherit;
+      }
+    }
+    li {
+      background-color: transparent;
+    }
+    li.active a {
+      color:           white;
+      text-decoration: underline;
+      background-color: transparent;
+    }
+  }
+
+  .nav-logo {
+    height:            47px;
+    margin-top:        0px;
+    background-color:  White;
+    @include box-sizing(content-box);
+    @include scut-padding(5px 10px 8px 10px);
+  }
+  .tagline {
+    font-size:         11px;
+    .ctx-bold {
+      font-weight:     400;
+    }
+    @include scut-absolute(n 0px 8px n);
+  }
+}
+.content-para {
+  h1,h3{
+    font-weight:       300;
+  }
+  .pre {
+    padding-left:      25px;
+    border-left:       3px solid lighten(#000, 80%);
+  }
+  &.green-textured-back {
+    .title {
+      background-color:transparent;
+      color:           White;
+      &:after {
+        @include background(image-url('logo-w-tx.png') no-repeat);
+        @include background-size;
+      }
+    }
+  }
+  .title {
+    background-color:  White;
+    padding-left:      15px;
+    &:after {
+      position:        absolute;
+      top:             10px;
+      right:           25px;
+      width:           80px;
+      height:          30px;
+      content:         ' ';
+      @include background(image-url('logo-g-tx.png') no-repeat);
+      @include background-size;
+    }
+  }
+  .green-line {
+    border-width:      0px;
+    border-bottom:     2px solid $green;
+    top:               70px;
+  }
+  .bold {
+    font-weight:       bold;
+  }
+  .small {
+    font-size:         12px;
+  }
+  .benefit {
+    padding-left:      15px;
+    font-size:         20px;
+    border-top:        1px dotted lighten(#000, 80%);
+    .glyphicon {
+      color:           $green;
+    }
+  }
+  .ctx-no-pad {
+    padding:           0px;
+  }
+  .ctx-glyph-red {
+    color:            $green;
+  }
+  .series-price {
+    color:            $red;
+    padding-left:     10px;
+    font-size:        17px;
+  }
+}
+
+.series-row {
+  &:hover {
+    cursor:          pointer;
+  }
+  .desc {
+    font-weight:       300;
+  }
+  .glyphicon-plus-sign  { display: inline; }
+  .glyphicon-minus-sign { display: none;   }
+  .desc                 { display: none;   }
+
+  &.js-expanded {
+    .glyphicon-plus-sign  { display: none;   }
+    .glyphicon-minus-sign { display: inline; }
+    .desc                 { display: block;  }
+  }
+}
+
+.faq {
+  .glyphicon {
+    @include scut-absolute(3px 3px n n);
+  }
+
+  .glyphicon-plus-sign  { display: inline; }
+  .glyphicon-minus-sign { display: none;   }
+  .list-group-item-text { display: none;   }
+
+  &.current {
+    background-color:     #f5f5f5;
+    .glyphicon-plus-sign  { display: none;   }
+    .glyphicon-minus-sign { display: inline; }
+    .list-group-item-text { display: block;  }
+  }
+}
+.register-container {
+  padding-top:         130px;
+}
+#register {
+  float:               right;
+  width:               350px;
+  height:              490px;
+  border-color:        lighten(#000, 90%);
+  // border:              1px solid $green;
+  // background-color:    White;
+  z-index:             2;
+  //padding:             20px;
+
+  // @include border-radius(15px);
+  // @include box-shadow(0px 0px 10px $green inset);
+
+  .input-group {
+    width: 80%;
+    margin-left: 10%;
+  }
+
+  &.affix {
+    right:             77px;
+    top:               138px;
+  }
+
+  .btn-primary {
+    border-color:     darken($red, 5%);
+    @include background(
+      linear-gradient(top, $red, darken($red, 5%))
+    );
+    &:hover{
+      background:     darken($red, 14%);
+    }
+  }
+  .pre {
+    margin-left:      5%;
+  }
+  .ctx-mrgn-s {
+    margin-top:       10px;
+  }
+  .ctx-mrgn-m {
+    margin-top:       15px;
+  }
+
+  small.help-block {
+    font-size:         10px;
+    @include scut-absolute(29px 0px n n);
+  }
+  i.form-control-feedback {
+    z-index:           2;
+  }
+  .glyphicon-refresh {
+    -webkit-animation: spin .7s infinite linear;
+    -moz-animation: spin .7s infinite linear;
+    -o-animation: spin .7s infinite linear;
+    animation: spin .7s infinite linear;
+  }
+  .loader {
+    display:           none;
+    &.show {
+      display:         inline;
+    }
+  }
+}
+
+iframe.map {
+  width:              450px;
+  height:             350px;
+  border:             none;
+  @include border-radius(3px);
+}
+
+.sticky {
+  width:     350px;
+  &.sticky1 { left: -80px;}
+  &.sticky3 { left: -50px;}
+  &.sticky5 { left: 150px;}
+}
+// ----------------------------------------------------------------------------
+//                             UTILITIES
+// ----------------------------------------------------------------------------
+.underline {
+  text-decoration:     underline;
+}
+.content-center {
+  text-align:          center;
+}
+.content-right {
+  text-align:          right;
+}
+.float-right {
+  float:               right;
+}
+
+@-moz-keyframes spin {
+  from {
+    -moz-transform: rotate(0deg);
+  }
+  to {
+    -moz-transform: rotate(360deg);
+  }
+}
+
+@-webkit-keyframes spin {
+  from {
+    -webkit-transform: rotate(0deg);
+  }
+  to {
+    -webkit-transform: rotate(360deg);
+  }
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
